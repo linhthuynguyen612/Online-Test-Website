@@ -23,15 +23,15 @@ public class ExamService {
         return this.examRepository.save(exam);
     }
 
-    public Exam getExamById(Long id) {
-        return this.examRepository.findById(id).orElse(null);
+    public Exam getExamById(String id) {
+        return this.examRepository.findFirstById(id);
     }
 
-    public void deleteExamById(Long id) {
+
+
+    public void deleteExamById(String id) {
         this.examRepository.deleteById(id);
     }
 
-    public Exam getExamByName(String name) {
-        return this.examRepository.findByName(name);
-    }
 }
+

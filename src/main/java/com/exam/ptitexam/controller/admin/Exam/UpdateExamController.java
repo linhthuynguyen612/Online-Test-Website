@@ -17,12 +17,12 @@ public class UpdateExamController {
     }
 
     @GetMapping("/admin/exam/{id}")
-    public Exam getUserById(@PathVariable("id") Long id) {
+    public Exam getUserById(@PathVariable("id") String id) {
         return this.examService.getExamById(id);
     }
 
     @PostMapping("/admin/exam/delete/{id}")
-    public String postMethodName(@PathVariable("id") Long id) {
+    public String postMethodName(@PathVariable("id") String id) {
         this.examService.deleteExamById(id);
         
         return "redirect:/admin/exam";
