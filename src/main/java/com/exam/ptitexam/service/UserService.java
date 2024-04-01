@@ -20,4 +20,20 @@ public class UserService {
     public List<User> getAllUser() {
         return UserRepository.findAll();
     }
+
+    public User handleSaveUser(User user) {
+        return this.UserRepository.save(user);
+    }
+
+    public User getUserById(Long id) {
+        return this.UserRepository.findById(id).orElse(null);
+    }
+
+    public User getUserByEmail(String email) {
+        return this.UserRepository.findByEmail(email);
+    }
+
+    public void deleteUserById(Long id) {
+        this.UserRepository.deleteById(id);
+    }
 }
