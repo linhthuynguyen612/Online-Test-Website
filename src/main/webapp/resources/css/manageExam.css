@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+}
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: #f6f6f9;
+}
+
+.container {
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    gap: 60px;
+    grid-template-columns: 300px auto;
+}
+
+aside {
+    height: 100vh;
+    background-color: #fafbfd;
+}
+
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+aside .logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+aside .logo img {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 40px;
+}
+
+aside .sidebar h3,
+aside .sidebar span {
+    color: #7d8da1;
+}
+
+aside .sidebar a {
+    display: flex;
+    margin-left: 16px;
+    gap: 16px;
+    align-items: center;
+    height: 50px;
+    position: relative;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a span {
+    font-size: 20px;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a.active {
+    background-color: rgba(132, 139, 200, 0.18);
+    color: #7380ec;
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+    content: "";
+    width: 6px;
+    height: 100%;
+    background-color: #7380ec;
+}
+
+aside .sidebar a.active span {
+    color: #7380ec;
+    margin-left: calc(1rem-3px);
+}
+
+aside .sidebar a:hover {
+    color: #7380ec;
+}
+
+aside .sidebar a:hover span,
+aside .sidebar a:hover h3 {
+    margin-left: 1rem;
+    color: #7380ec;
+}
+
+main > h1 {
+    margin-top: 20px;
+}
+
+.content {
+    padding: 15px 30px 0 30px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 250px;
+    
+    margin-top: 50px;
+}
+
+.box-header,
+.box-add {
+    padding: 1.5rem 1.5rem;
+    border-bottom: 1px solid rgba(72, 94, 144, 0.16);
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.box-header p {
+    font-size: 1.5rem;
+}
+
+
+.box-body {
+    background-color: #fff;
+}
+
+.box-body thead tr{
+    height: 50px;
+    color: #fff;
+    background-color: #172b4c;
+}
+
+.box-body tr{
+    height: 50px;
+    background-color: #e8edf8;
+}
+
+.box-body tr td > a {
+    color: black;
+}
+
+.box-body tr td:not(:last-child) {
+    padding-left: 16px;
+}
+
+.box-body tr td:last-child {
+    text-align: center;
+}
+
+.box-add button {
+    padding: 10px 20px;
+    background-color: #0052cc;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*============================== Modal add ============================*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: modalFadeIn 0.3s ease-in-out;
+  }
+  
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    transform: translateY(-100%);
+    transition: transform 5ms ease-in-out;
+}
+
+.modal-content-delete {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    transform: translateY(-100%);
+    transition: transform 5ms ease-in-out;
+}
+
+
+.modal.show {
+    display: block;
+}
+
+.modal-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(72, 94, 144, 0.16);
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #888;
+}
+
+@keyframes modalFadeIn {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
+
+
+#addExamForm,
+#updateExamForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    margin-top: 20px;
+}
+    
+#addExamForm div,
+#updateExamForm div {
+    margin-bottom: 15px;
+}
+  
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+  
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-bot {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-bot > .close {
+    font-size: 13px !important;
+}
+  
+button[type="submit"] {
+    background-color: #0052cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #003e99;
+}
+
+
+
+
+
+
