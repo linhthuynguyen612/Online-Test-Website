@@ -25,12 +25,12 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="manageExam.html">
+                <a href="/admin/exam">
                     <span class="fa-solid fa-laptop-code"></span>
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="manageUser.html" class="active">
+                <a href="/admin/user" class="active">
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>

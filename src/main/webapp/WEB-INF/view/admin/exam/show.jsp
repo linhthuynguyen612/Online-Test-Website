@@ -25,12 +25,12 @@
                 </div>
             </div>
             <div class="sidebar">
-                <a href="manageExam.html" class="active">
+                <a href="/admin/exam" class="active">
                     <span class="fa-solid fa-laptop-code"></span>
                     <h3>Quản lý kì thi</h3>
                 </a>
 
-                <a href="manageUser.html">
+                <a href="/admin/user">
                     <span class="fa-regular fa-user"></span>
                     <h3>Quản lý người dùng</h3>
                 </a>
@@ -65,8 +65,9 @@
                         <thead>
                             <tr>
                                 <th style="width:10%">STT</th>
+                                <th style="width:10%">Mã kì thi</th>
                                 <th style="width:25%">Tên kì thi</th>
-                                <th style="width:25%">Loại kì thi</th>
+                                <th style="width:15%">Loại kì thi</th>
                                 <th style="width:10%">Trạng thái</th>
                                 <th style="width:20%">Mô tả</th>
                                 <th style="width:10%">Thao tác</th>
@@ -80,8 +81,9 @@
                             
                                 <tr>
                                     <td style="width:10%"><%=index%></td>
+                                    <td style="width:10%">${exam.id}</td>
                                     <td style="width:25%">${exam.name}</td>
-                                    <td style="width:25%">${exam.type}</td>
+                                    <td style="width:15%">${exam.type}</td>
                                     <td style="width:10%">${exam.status}</td>
                                     <td style="width:20%">${exam.description}</td>
                                     <td style="width:10%">
@@ -107,6 +109,12 @@
                 </div>
                 <div class="modal-main">
                     <form:form id="addExamForm" method="post" action="/admin/exam/create" modelAttribute="newExam">
+                        
+                        <div>
+                            <label>Mã kì thi:</label>
+                            <form:input type="text" path="id" />
+                        </div>
+                    
                         <div>
                           <label>Tên kì thi:</label>
                           <form:input type="text" path="name" />
@@ -144,9 +152,14 @@
                 <div class="modal-main">
                     <form id="updateExamForm" method="post" action="/admin/exam/update" modelAttribute="newExam">
                         <div>
+                            <label>Mã kì thi:</label>
+                            <form:input type="text" path="newExam.id" id="id11"/>
+                        </div>
+                        
+                        <div>
                             <label>Tên kì thi:</label>
                             <form:input type="text" id="name11" path="newExam.name" />
-                          </div>
+                        </div>
                           <div>
                               <label>Loại kì thi:</label>
                               <form:input type="text" path="newExam.type" id="type11"/>
@@ -163,7 +176,7 @@
                             </form:select>
                           </div>
                           <div class="form-bot">
-                              <button style="width: 100%;" type="submit">Thêm mới</button>
+                              <button style="width: 100%;" type="submit">Cập nhật</button>
                           </div>
                     
                     </form>
@@ -174,9 +187,8 @@
         <div id="modal2" class="modal">
             <div class="modal-content-delete">              
                 <h2>Bạn chắc chắn muốn xóa?</h2>
-                <div class="form-bot">
-                    <button type="submit">Cập nhật</button>
-                    <button type="submit" class="close">Đóng</button>
+                <div class="form-bot" style="display: flex; justify-content: center;">
+                    <button style="width: 50%;" type="submit">Confirm</button>
                 </div>
             </div>
               
@@ -194,6 +206,7 @@
                     type: 'GET',
                     success: function(exam) {                        
                         $("#name11").val(exam.name);
+                        $("#id11").val(exam.id);
                         $("#type11").val(exam.type);
                         $("#description11").val(exam.description);
                         $("#status11").val(exam.status);

@@ -42,7 +42,7 @@
             <a href="#course-3">Cuối kỳ</a>
             <a href="">
                 <span>
-                    <img class="account-profile-img" src="./assets/image/user_icon_3.jpg" alt="">
+                    <img class="account-profile-img" src="/client/img/user_icon_3.jpg" alt="">
                 </span>
             </a>
 
@@ -50,266 +50,88 @@
 
 
     </header>
-
+    
     <div id="exam-items">
 
         <span class="filters">
             <label for="exercise-type"><i class="fa-solid fa-filter"></i></label>
             <select id="exercise-type">
               <option value="all">Tất cả</option>
-              <option value="free">Tự do</option>
-              <option value="time">Thời gian</option>
+              <option value="Tự do">Tự do</option>
+              <option value="Thời gian">Thời gian</option>
             </select>
         </span>
+        
         <div class="practice-title" id="course-1">
             <h2>Luyện tập</h2>
         </div>
-        <div id="practice">
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Luyện tập Mạng Máy Tính P1</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
+        
+            <div id="practice">
+                <c:forEach var="exam" items="${exams}">
+                    <c:if test="${exam.type == 'Luyện tập'}">
+                        <div class="items" data-status="${exam.status}">
+                            <img class="item-img" src="client/img/subject.png" alt="">
+                            <h2 class="item-title">${exam.name}</h2>
+                            <div class="item-info">
+                                <span style="color:#677788;" class="fa-regular fa-clock"></span>
+                                <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
+                            </div>
+                            <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
+                            <a href="test.html">
+                                <button class="btn-start-exam">Bắt đầu thi</button>
+                            </a>
+                        </div>
+                    </c:if>
+                </c:forEach>
             </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Luyện tập Mạng Máy Tính P2</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
+       
+            <div class="practice-title" id="course-2">
+                <h2>Giữa kỳ</h2>
             </div>
+            <div id="midterm">
+                <c:forEach var="exam" items="${exams}">
+                    <c:if test="${exam.type == 'Giữa kỳ'}">
+                        <div class="items" data-status="${exam.status}">
+                            <img class="item-img" src="client/img/subject.png" alt="">
+                            <h2 class="item-title">${exam.name}</h2>
+                            <div class="item-info">
+                                <span style="color:#677788;" class="fa-regular fa-clock"></span>
+                                <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
+                            </div>
+                            <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
+                            <a href="test.html">
+                                <button class="btn-start-exam">Bắt đầu thi</button>
+                            </a>
+                        </div>
+                    </c:if>
+                </c:forEach>
 
-            <div class="items" data-status="time">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Luyện tập Triết học Mác Lênin</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">06/03/2024</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
+                
+
             </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Luyện tập Đại</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
+            <div class="practice-title" id="course-3">
+                <h2>Cuối kỳ</h2>
             </div>
+            <div id="finalexam">
+                <c:forEach var="exam" items="${exams}">
+                    <c:if test="${exam.type == 'Cuối kỳ'}">
+                        <div class="items" data-status="${exam.status}">
+                            <img class="item-img" src="client/img/subject.png" alt="">
+                            <h2 class="item-title">${exam.name}</h2>
+                            <div class="item-info">
+                                <span style="color:#677788;" class="fa-regular fa-clock"></span>
+                                <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
+                            </div>
+                            <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
+                            <a href="test.html">
+                                <button class="btn-start-exam">Bắt đầu thi</button>
+                            </a>
+                        </div>
+                    </c:if>
+                </c:forEach>
 
-            <div class="items" data-status="time">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Luyện tập Giải tích 1 </h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: 02/04/2024</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
             </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Luyện tập Hệ điều hành</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-        </div>
-        <div class="practice-title" id="course-2">
-            <h2>Giữa kỳ</h2>
-        </div>
-        <div id="midterm">
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Giữa kỳ Mạng Máy Tính</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Giữa kỳ Cơ sở dữ liệu phân tán</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: 23/03/2024</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Giữa kỳ Kĩ thuật số</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Giữa kỳ Tin học cơ sở 1</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: 04/03/2024</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Giữa kỳ Cơ sở dữ liệu</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="time">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Giữa kỳ Lịch sử đảng</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">06/03/2024</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-        </div>
-        <div class="practice-title" id="course-3">
-            <h2>Cuối kỳ</h2>
-        </div>
-        <div id="finalexam">
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Cuối kỳ Tư Tưởng Hồ Chí Minh</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Cuối kỳ Mạng Máy Tính</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: 02/05/2024</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Cuối kỳ Vật lí và thí nghiệm 1</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Cuối kỳ Xử lý tín hiệu số</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: 03/04/2024</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Cuối kỳ Tin học cơ sở 2</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-            <div class="items" data-status="free">
-                <img class="item-img" src="client/img/subject.png" alt="">
-                <h2 class="item-title">2024 Cuối kỳ Kiến trúc máy tính</h2>
-                <div class="item-info">
-                    <span style="color:#677788;" class="fa-regular fa-clock"></span>
-                    <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">120 phút | 50 câu hỏi </p>
-                </div>
-                <p style="margin-bottom: 2rem;">Trạng thái: Tự do</p>
-                <a href="test.html">
-                    <button class="btn-start-exam">Bắt đầu thi</button>
-                </a>
-            </div>
-
-        </div>
+        
 
 
         

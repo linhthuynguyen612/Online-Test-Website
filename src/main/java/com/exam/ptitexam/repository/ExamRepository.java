@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.exam.ptitexam.domain.Exam;
 
 @Repository
-public interface ExamRepository extends JpaRepository<Exam, Long>{
+public interface ExamRepository extends JpaRepository<Exam, String>{
     List<Exam> findAll();
-    Exam findByName(String name);
+    Exam findFirstById(String id);
 }
