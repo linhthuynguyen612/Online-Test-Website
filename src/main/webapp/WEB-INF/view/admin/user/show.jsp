@@ -59,8 +59,8 @@
                     </a>
                 </div>
 
-                <div class="box-body">
-                    <table style="width:100%" id="examTable">
+                <div class="box-body" style="overflow: auto; height: 450px;">
+                    <table style="width:100%" id="examTable" scroll="auto">
                         <thead>
                             <tr>
                                 <th style="width:10%">STT</th>
@@ -101,7 +101,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
-                    <h2>Thêm sinh viên mới</h2>
+                    <h2>Thêm người dùng mới</h2>
                 </div>
                 <div class="modal-main">
                     <form:form id="addUserForm" method="post" action="/admin/user/create" modelAttribute="newUser">
@@ -115,7 +115,7 @@
                         </div>
                         <div>
                           <label >Email:</label>
-                          <form:input type="email" path="email" />
+                          <form:input type="text" path="email" />
                         </div>
                         <div>
                           <label>Giới tính:</label>
@@ -137,7 +137,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
-                    <h2>Cập nhật thông tin sinh viên</h2>
+                    <h2>Cập nhật thông tin người dùng</h2>
                 </div>
                 <div class="modal-main">
                     <form:form id="updateExamForm" method="post" action="/admin/user/update" modelAttribute="newUser">
@@ -151,7 +151,7 @@
                           </div>
                           <div>
                             <label >Email:</label>
-                            <form:input type="email" id="email11" path="email"/>
+                            <form:input type="text" id="email11" path="email"/>
                           </div>
                           <div>
                             <label>Giới tính:</label>

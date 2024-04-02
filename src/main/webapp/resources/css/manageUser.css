@@ -21,7 +21,7 @@ body {
     display: grid;
     width: 100%;
     margin: 0 auto;
-    gap: 60px;
+    gap: 35px;
     grid-template-columns: 300px auto;
 }
 
@@ -264,7 +264,7 @@ label {
 }
   
 input[type="text"],
-textarea {
+input[type="email"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;

@@ -60,8 +60,8 @@
 
                 </div>
 
-                <div class="box-body">
-                    <table style="width:100%" id="examTable">
+                <div class="box-body" style="overflow: auto; height: 450px;">
+                    <table style="width: 100%;" id="examTable" >
                         <thead>
                             <tr>
                                 <th style="width:10%">STT</th>
