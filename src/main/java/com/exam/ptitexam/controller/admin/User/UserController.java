@@ -40,8 +40,8 @@ public class UserController {
 
     @PostMapping("/admin/user/update")
     public String postUpdateUser(Model model, @ModelAttribute("newUser") User user){
-        User currentUser = this.userService.getUserByEmail(user.getEmail());
-        System.out.println(user.getFullName());
+        User currentUser = this.userService.getUserByStudentCode(user.getStudentCode());
+        System.out.println(user);
         System.out.println(currentUser);
         if(currentUser != null){
             currentUser.setFullName(user.getFullName());
@@ -51,7 +51,7 @@ public class UserController {
             this.userService.handleSaveUser(currentUser);
         }
         System.out.println(currentUser);
-        return "redirect:/admin/user";
+         return "redirect:/admin/user";
     }
 
     

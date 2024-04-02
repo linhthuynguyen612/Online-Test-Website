@@ -29,11 +29,11 @@ public class UserService {
         return this.UserRepository.findById(id).orElse(null);
     }
 
-    public User getUserByEmail(String email) {
-        return this.UserRepository.findByEmail(email);
-    }
-
     public void deleteUserById(Long id) {
         this.UserRepository.deleteById(id);
+    }
+
+    public User getUserByStudentCode(String studentCode) {
+        return this.UserRepository.findByStudentCode(studentCode);
     }
 }
