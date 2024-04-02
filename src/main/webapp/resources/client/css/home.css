@@ -120,12 +120,11 @@ header {
 
 #exam-items {
     width: 1080px;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     flex-direction: column;
     position: relative;
 }
+
 
 .filters {
     position: absolute;
@@ -145,6 +144,24 @@ header {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+@media (max-width: 992px) {
+    #practice,
+    #midterm,
+    #finalexam {
+        width: 100%;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 600px) {
+    #practice,
+    #midterm,
+    #finalexam {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 .practice-title {
@@ -206,6 +223,8 @@ header {
 .course >a:hover {
     color: #71869d;
 }
+
+
 
 
 

@@ -1,10 +1,13 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title> 
-    <link rel="stylesheet" href="style/login.css" />
+    <link rel="stylesheet" href="/client/css/login.css" />
     
 </head>
 <body> 
@@ -29,10 +32,10 @@
             </div>
             <input id="submit" type="submit" onclick="handleSubmit()" value="Đăng nhập" id="submit">
             <div class="register">
-                <p> <a href="register.html">Tạo tài khoản</a></p>
+                <p> <a href="http://localhost:8080/register">Tạo tài khoản</a></p>
             </div>
         </form>
     </section> 
-    <script src="login.js"></script>
+    <script src="/client/js/login.js"></script>
 </body>
 </html>
