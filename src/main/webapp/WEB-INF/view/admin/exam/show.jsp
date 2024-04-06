@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="box-add">
-                    <a href="#" id="openModalBtn">
+                    <a href="/admin/exam/create" id="openModalBtn">
                         <button>
                             <span style="margin-right: 5px;" class="fa-solid fa-plus"></span> 
                             Thêm mới
@@ -87,8 +87,8 @@
                                     <td style="width:10%">${exam.status}</td>
                                     <td style="width:20%">${exam.description}</td>
                                     <td style="width:10%">
-                                        <a href="#" class="openUpdateModal" data-id="${exam.id}" data-modal="modal1"><span style="margin: 0 10px;" class="fa-solid fa-pen-to-square"></span></a>
-                                        <a href="#" class="openDeleteModal" data-id="${exam.id}" data-modal="modal2"><span class="fa-solid fa-xmark"></span></a>
+                                        <a href="/admin/exam/update/${exam.id}" class="openUpdateModal" data-id="${exam.id}" data-modal="modal1"><span style="margin: 0 10px;" class="fa-solid fa-pen-to-square"></span></a>
+                                        <a href="/admin/exam/delete/${exam.id}" class="openDeleteModal" data-id="${exam.id}" data-modal="modal2"><span class="fa-solid fa-xmark"></span></a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -101,7 +101,7 @@
             
         </main>
 
-        <div id="addExamModal" class="modal">
+        <!-- <div id="addExamModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
@@ -141,7 +141,7 @@
                     </form:form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div id="modal1" class="modal">
             <div class="modal-content">

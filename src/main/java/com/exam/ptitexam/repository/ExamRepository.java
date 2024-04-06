@@ -11,4 +11,5 @@ import com.exam.ptitexam.domain.Exam;
 public interface ExamRepository extends JpaRepository<Exam, String>{
     List<Exam> findAll();
     Exam findFirstById(String id);
+    
 }

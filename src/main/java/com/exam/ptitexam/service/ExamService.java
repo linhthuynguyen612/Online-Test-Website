@@ -28,7 +28,6 @@ public class ExamService {
     }
 
 
-
     public void deleteExamById(String id) {
         this.examRepository.deleteById(id);
     }
