@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.exam.ptitexam.domain.Exam;
@@ -28,6 +29,12 @@ public class Examcontroller {
         return "admin/exam/show";
     }
 
+    @GetMapping("/admin/exam/create")
+    public String getCreateExam(Model model){
+        model.addAttribute("newExam", new Exam());
+        return "admin/exam/create";
+    }
+
     @PostMapping("/admin/exam/create")
     public String postCreateUser(Model model, @ModelAttribute("newExam") Exam exam){
         
@@ -36,6 +43,13 @@ public class Examcontroller {
         return "redirect:/admin/exam";
     }
 
+    @GetMapping("/admin/exam/update/{id}")
+    public String getUpdateExamPage(Model model, @PathVariable("id") String id) {
+        Exam exam = this.examService.getExamById(id);
+        model.addAttribute("newExam", exam);
+        return "admin/exam/update";
+    }
+    
     @PostMapping("/admin/exam/update")
     public String postUpdateUser(Model model, @ModelAttribute("newExam") Exam exam){
         Exam currentExam = this.examService.getExamById(exam.getId());

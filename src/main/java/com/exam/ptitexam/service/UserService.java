@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
-        return this.UserRepository.findById(id).orElse(null);
+        return this.UserRepository.findFirstById(id);
     }
 
     public void deleteUserById(Long id) {

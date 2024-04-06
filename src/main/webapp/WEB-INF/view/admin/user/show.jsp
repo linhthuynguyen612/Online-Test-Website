@@ -53,8 +53,8 @@
                 <div class="box-add">
                     <a href="#" id="openModalBtn">
                         <button>
-                            <span style="margin-right: 5px;" class="fa-solid fa-plus"></span> 
-                            Thêm mới
+                            <span style="margin-right: 5px; color: white" class="fa-solid fa-plus"></span> 
+                            <a href="/admin/user/create" style="color: white;">Thêm mới</a>
                         </button>
                     </a>
                 </div>
@@ -83,8 +83,8 @@
                                 <td style="width:25%">${user.email}</td>
                                 <td style="width:15%">${user.gender}</td>
                                 <td style="width:10%">
-                                    <a href="#" class="openUpdateModal" data-id="${user.id}" data-modal="modal1"><span style="margin: 0 10px;" class="fa-solid fa-pen-to-square"></span></a>
-                                    <a href="#" class="openDeleteModal" data-id="${user.id}" data-modal="modal2"><span class="fa-solid fa-xmark"></span></a>
+                                    <a href="/admin/user/update/${user.id}" class="openUpdateModal" data-id="${user.id}" data-modal="modal1"><span style="margin: 0 10px;" class="fa-solid fa-pen-to-square"></span></a>
+                                    <a href="/admin/user/delete/${user.id}" class="openDeleteModal" data-id="${user.id}" data-modal="modal2"><span class="fa-solid fa-xmark"></span></a>
                                 </td>
                             </tr>
                             </c:forEach>
@@ -97,7 +97,7 @@
             
         </main>
 
-        <div id="addStudentModal" class="modal">
+        <!-- <div id="addStudentModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
@@ -131,92 +131,14 @@
                     </form:form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span class="close">&times;</span>
-                    <h2>Cập nhật thông tin người dùng</h2>
-                </div>
-                <div class="modal-main">
-                    <form:form id="updateExamForm" method="post" action="/admin/user/update" modelAttribute="newUser">
-                        <div>
-                            <label>Tên sinh viên:</label>
-                            <form:input type="text" id="fullName11" path="fullName"/>
-                          </div>
-                          <div>
-                              <label>Mã sinh viên:</label>
-                              <form:input type="text" id="studentCode11" path="studentCode"/>
-                          </div>
-                          <div>
-                            <label >Email:</label>
-                            <form:input type="text" id="email11" path="email"/>
-                          </div>
-                          <div>
-                            <label>Giới tính:</label>
-                            <form:select id="gender11" path="gender">
-                              <form:option value="Nam">Nam</form:option>
-                              <form:option value="Nữ">Nữ</form:option>
-                            </form:select>
-                          </div>
-                          <div class="form-bot">
-                              <button style="width: 100%;" type="submit">Cập nhật</button>
-                          </div>
-                        
-                    </form:form>
-                </div>
-            </div>
-        </div>
-        
-        <div id="modal2" class="modal">
-            <div class="modal-content-delete">              
-                <h2>Bạn chắc chắn muốn xóa?</h2>
-                <form class="form-bot">
-                    <button style="width: 100%;" type="submit" >Xóa</button>
-                </form>
-            </div>
-              
-        </div>
+     
     </div>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/User.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $(".openUpdateModal").click(function() {
-                var userId = $(this).data("id");
-                console.log(userId);
-                $.ajax({
-                    url: '/admin/user/' + userId,
-                    type: 'GET',
-                    success: function(user) {                        
-                        $("#fullName11").val(user.fullName);
-                        $("#studentCode11").val(user.studentCode);
-                        $("#email11").val(user.email);
-                        $("#gender11").val(user.gender);
-                        // Open the modal
-                        $("#modal1").show();
-                        console.log(user);
-                    }
-                });
-            });
-
-            $(".openDeleteModal").click(function() {
-                var userId = $(this).data("id");
-                console.log(userId);
-                $.ajax({
-                    url: '/admin/user/delete/' + userId,
-                    type: 'POST',
-                    success: function(user) {
-                        // Open the modal
-                        $("#modal2").show();
-                        console.log(user);
-                    }
-                });
-            });
-        });
-    </script>
+    
 </body>
 </html>
 
