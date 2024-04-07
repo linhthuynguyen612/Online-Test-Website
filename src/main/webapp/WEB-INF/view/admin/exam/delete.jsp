@@ -51,8 +51,11 @@
                     <table style="width:100%"  scroll="auto">
                         <div class="modal-main">
                             <div style="display: flex; flex-direction: column; align-items: center; margin-top: 3rem;">              
-                                <h2>Bạn chắc chắn muốn xóa người dùng?</h2>
-                                <form:form class="form-bot" method="post" action="/admin/user/delete" modelAttribute="newUser">
+                                <form:form class="form-bot" method="post" action="/admin/exam/delete" modelAttribute="newExam">
+                                    <h2>Bạn chắc chắn muốn xóa kì thi có mã ${newExam.id}?</h2>
+                                    <div style="display: none;">
+                                        <form:input  type="text" path="id" value="${newExam.id}"/>
+                                    </div>
                                     <button style="background-color: red; margin-top: 1rem;" type="submit" >Xóa</button>
                                 </form:form>
                             </div>
