@@ -32,8 +32,4 @@ public class UserService {
     public void deleteUserById(Long id) {
         this.UserRepository.deleteById(id);
     }
-
-    public User getUserByStudentCode(String studentCode) {
-        return this.UserRepository.findByStudentCode(studentCode);
-    }
 }

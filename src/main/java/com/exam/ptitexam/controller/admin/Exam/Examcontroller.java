@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.exam.ptitexam.domain.Exam;
 import com.exam.ptitexam.service.ExamService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class Examcontroller {
@@ -36,7 +38,7 @@ public class Examcontroller {
     }
 
     @PostMapping("/admin/exam/create")
-    public String postCreateUser(Model model, @ModelAttribute("newExam") Exam exam){
+    public String postCreateexam(Model model, @ModelAttribute("newExam") Exam exam){
         
         this.examService.handleSaveExam(exam);
         
@@ -51,7 +53,7 @@ public class Examcontroller {
     }
     
     @PostMapping("/admin/exam/update")
-    public String postUpdateUser(Model model, @ModelAttribute("newExam") Exam exam){
+    public String postUpdateexam(Model model, @ModelAttribute("newExam") Exam exam){
         Exam currentExam = this.examService.getExamById(exam.getId());
         System.out.println(exam.getName());
         System.out.println(currentExam);
@@ -64,4 +66,19 @@ public class Examcontroller {
         }
         return "redirect:/admin/exam";
     }
+
+    @GetMapping("/admin/exam/delete/{id}")
+    public String deleteExamPage(Model model, @PathVariable("id") String id){
+        model.addAttribute("newExam", this.examService.getExamById(id));
+        model.addAttribute("id", id);
+        return "admin/exam/delete";
+    }
+
+    @PostMapping("/admin/exam/delete")
+    public String postDeletEexam(Model model, @ModelAttribute("newExam") Exam exam){
+        this.examService.deleteExamById(exam.getId());
+        
+        return "redirect:/admin/exam";
+    }   
+    
 }
