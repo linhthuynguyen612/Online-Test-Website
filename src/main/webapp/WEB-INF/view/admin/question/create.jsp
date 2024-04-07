@@ -12,10 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/manageUser.css">
+    <link rel="stylesheet" href="/css/manageQuestion.css">
 
 
 </head>
 <body>
+    <script src="/js/Question.js"></script>
+
     <div class="container">
         <aside>
             <div class="top">
@@ -45,60 +48,38 @@
         <main>
             <h1>Quản lý người dùng</h1>
 
-            <div class="content">
+            <div class="content" style="margin-top: 30px;">
                 <div class="box-header">
-                    <p>Cập nhật thông tin kì thi</p>
+                    <p style="display: inline-block; ">Tạo câu hỏi cho bài thi</p>
+                    <button id="addButton">Thêm câu hỏi</button>
+
                 </div>
-                <div class="box-body" style="overflow: auto; height: 450px;">
+                <div class="box-body" method="post" action="/admin/question/create" style="overflow: auto; height: 450px;">
                     <div class="modal-main">
-                        <form id="updateExamForm" method="post" action="/admin/exam/update" modelAttribute="newExam">
-                            <div>
-                                <label>Mã kì thi:</label>
-                                <form:input type="text" path="newExam.id" id="id11"/>
-                            </div>
-                            
-                            <div>
-                                <label>Tên kì thi:</label>
-                                <form:input type="text" id="name11" path="newExam.name" />
-                            </div>
-                              <div>
-                                  <label>Loại kì thi:</label>
-                                  <form:input type="text" path="newExam.type" id="type11"/>
-                              </div>
-                              <div>
-                                <label >Mô tả:</label>
-                                <form:input type="text" path="newExam.description" id="description11"/>
-                              </div>
-                              <div>
-                                <label>Trạng thái:</label>
-                                <form:select path="newExam.status" id="status11">
-                                  <form:option value="Tự do">Tự do</form:option>
-                                  <form:option value="Thời gian">Thời gian</form:option>
-                                </form:select>
-                              </div>
-                              
-                              <div class="form-bot">
-                                  <button style="width: 100%;" type="submit">Cập nhật</button>
-                              </div>
-                        
-                        </form>
+                        <form:form id="addExamForm"  modelAttribute="newQuestion">
+
+                            <div id="inputsContainer"></div> <br>
+
+
+                        </form:form>
+
+
+
                     </div>
                 </div>
+
+                <button id="submitButton" onclick="saveQuestions()">Hoàn thành</button>
             </div>
 
-            
+
+
+
         </main>
-   
-    
-    
 
-    
-    </main>
-         
-     
-    
 
-      
+
+
+
 </body>
 </html>
 

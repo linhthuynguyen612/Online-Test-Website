@@ -5,10 +5,7 @@ import com.exam.ptitexam.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,10 +22,23 @@ public class QuestionController {
         return "";
     }
 
+    @GetMapping("admin/exam/question/create_question")
+    public String getCreateQuestion (Model model) {
+        model.addAttribute("newQuestion", new Question());
+        return "admin/question/create";
+    }
+
+//    @PostMapping("admin/exam/question/create_question")
+//    public String postCreateQuestion (Model model, @ModelAttribute("newQuestion") Question question) {
+//        questionRepository.save(question);
+//        return "redirect:/admin/question";
+//    }
+
     @PostMapping("admin/exam/question/create_question")
-    public String postCreateQuestion (Model model, @ModelAttribute("newQuestion") Question question) {
-        questionRepository.save(question);
-        return "";
+    public String createQuestion (@RequestBody List<Question> questions) {
+
+        questionRepository.saveAll(questions);
+        return "redirect:/admin/question";
     }
 
     @PutMapping("admin/exam/question/update_question")
