@@ -76,6 +76,11 @@
                                   <form:option value="Thời gian">Thời gian</form:option>
                                 </form:select>
                               </div>
+                              <div class="box-header">Cập nhật câu hỏi trong kì thi</div>
+                                <div class="box-body" style="overflow: auto; height: 450px;">
+                                    <div id="inputsContainer"></div> <br>
+                                    <button id="addButton">Thêm câu hỏi</button> <br>
+                                </div>
                               <div class="form-bot">
                                   <button style="width: 100%;" type="submit">Cập nhật</button>
                               </div>
@@ -84,8 +89,6 @@
                     </div>
                 </div>
             </div>
-
-         
 
             
         </main>
