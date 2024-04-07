@@ -1,6 +1,8 @@
 package com.exam.ptitexam.controller.admin.Question;
 
+import com.exam.ptitexam.domain.Exam;
 import com.exam.ptitexam.domain.Question;
+import com.exam.ptitexam.repository.ExamRepository;
 import com.exam.ptitexam.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import java.util.List;
 public class QuestionController {
     @Autowired
     private QuestionRepository questionRepository;
+    @Autowired
+    private ExamRepository examRepository;
 
     @GetMapping("admin/exam/question")
     public String getQuestionPage (Model model){
@@ -20,6 +24,15 @@ public class QuestionController {
         model.addAttribute("questions", questions);
         model.addAttribute("newQuestion", new Question());
         return "";
+    }
+
+    @GetMapping("admin/exam/question/{examId}")
+    public String getQuestionByExamId (Model model, @PathVariable("examId") String examId) {
+        Exam foundExam = examRepository.findFirstById(examId);
+        List<Question> questions = questionRepository.findByExam(foundExam);
+        model.addAttribute("questions", questions);
+        model.addAttribute("newQuestion", new Question());
+        return "admin/question/show";
     }
 
     @GetMapping("admin/exam/question/create_question")
@@ -36,9 +49,12 @@ public class QuestionController {
 
     @PostMapping("admin/exam/question/create_question")
     public String createQuestion (@RequestBody List<Question> questions) {
-
+        Exam foundExam = examRepository.findFirstById("");
+        for (Question q : questions) {
+            q.setExam(foundExam);
+        }
         questionRepository.saveAll(questions);
-        return "redirect:/admin/question";
+        return "redirect:/admin/exam/question";
     }
 
     @PutMapping("admin/exam/question/update_question")

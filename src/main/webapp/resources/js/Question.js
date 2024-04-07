@@ -1,10 +1,11 @@
 function taoThanhCong() {
-    alert("Bạn đã tạo thành công câu hỏi cho bài thi! Có thể bắt đầu làm bài ngay.");
+    alert("Bạn đã tạo câu hỏi cho bài thi thành công!");
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("addButton").addEventListener("click", addQuestion);
 });
+
 
 var i = 0;
 function addQuestion(event) {

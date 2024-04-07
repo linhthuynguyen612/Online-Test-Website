@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <aside>
+    <!-- <aside>
         <div class="top">
             <div class="logo">
                 <img src="/client/img/logo.png" alt="">
@@ -40,33 +40,42 @@
                 <h3>Thống kê</h3>
             </a>
         </div>
-    </aside>
+    </aside> -->
 
     <main>
             <h1>Danh sách câu hỏi của bài thi</h1>
+            <a href="">Tạo câu hỏi cho bài kiểm tra</a>
+            
+            <div class="box-body" style="overflow: auto; height: 450px;">
+                <% int index = 0; %>
+                <c:forEach items="${questions}" var="question">
+                    <% index++; %>
 
-            <div class="content" style="margin-top: 30px;">
-                <div class="box-header">
-                    <p style="display: inline-block; ">T</p>
-                    <button id="addButton">Thêm câu hỏi</button>
+                    <p>
+                        <strong>Câu <%=index%>:</strong> ${question.questionContent}
+                    </p>
 
-                </div>
-                <div class="box-body" method="post" action="/admin/question/create" style="overflow: auto; height: 450px;">
-                    <div class="modal-main">
-                        <form:form id="addExamForm"  modelAttribute="newQuestion">
-
-                            <div id="inputsContainer"></div> <br>
-
-
-                        </form:form>
-
-
-
+                    <div>
+                        <div>
+                            <label for="">A.</label> ${question.optionA}
+                        </div>
+                        <div>
+                            <label for="">B.</label> ${question.optionB}
+                        </div>
+                        <div>
+                            <label for="">C.</label> ${question.optionC}
+                        </div>
+                        <div>
+                            <label for="">D.</label> ${question.optionD}
+                        </div>                
+                        <div>
+                            <label for="">Đáp án:</label> ${question.correctOption}
+                        </div>
                     </div>
-                </div>
+
+                </c:forEach>
 
             </div>
-
 
 
 

@@ -16,6 +16,7 @@
 
 </head>
 <body>
+
     <div class="container">
         <aside>
             <div class="top">
@@ -80,6 +81,7 @@
                               <div class="form-bot">
                                   <button style="width: 100%;" type="submit">Cập nhật</button>
                               </div>
+                              <a href="admin/exam/question/${newExam.id}">Xem câu hỏi của kỳ thi ${newExam.name}</a>
                         
                         </form>
                     </div>
