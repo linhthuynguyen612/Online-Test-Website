@@ -18,25 +18,27 @@ public class QuestionController {
     @Autowired
     private ExamRepository examRepository;
 
-    @GetMapping("admin/exam/question")
+    @GetMapping("/admin/exam/update/question")
     public String getQuestionPage (Model model){
         List<Question> questions = questionRepository.findAll();
-        model.addAttribute("questions", questions);
-        model.addAttribute("newQuestion", new Question());
-        return "";
-    }
-
-    @GetMapping("admin/exam/question/{examId}")
-    public String getQuestionByExamId (Model model, @PathVariable("examId") String examId) {
-        Exam foundExam = examRepository.findFirstById(examId);
-        List<Question> questions = questionRepository.findByExam(foundExam);
         model.addAttribute("questions", questions);
         model.addAttribute("newQuestion", new Question());
         return "admin/question/show";
     }
 
-    @GetMapping("admin/exam/question/create_question")
-    public String getCreateQuestion (Model model) {
+    @GetMapping("/admin/exam/update/question/{examId}")
+    public String getQuestionByExamId (Model model, @PathVariable("examId") String examId) {
+        Exam foundExam = examRepository.findFirstById(examId);
+        List<Question> questions = questionRepository.findByExam(foundExam);
+        model.addAttribute("questions", questions);
+        model.addAttribute("examId", examId);
+        model.addAttribute("newQuestion", new Question());
+        return "admin/question/show";
+    }
+
+    @GetMapping("/admin/exam/question/create_question/{examId}")
+    public String getCreateQuestionPage (Model model, @PathVariable("examId") String examId) {
+        model.addAttribute("examId", examId);
         model.addAttribute("newQuestion", new Question());
         return "admin/question/create";
     }
@@ -47,17 +49,18 @@ public class QuestionController {
 //        return "redirect:/admin/question";
 //    }
 
-    @PostMapping("admin/exam/question/create_question")
-    public String createQuestion (@RequestBody List<Question> questions) {
-        Exam foundExam = examRepository.findFirstById("");
+    @PostMapping("/admin/exam/question/create_question/{examId}")
+    public String createQuestion (Model model, @RequestBody List<Question> questions, @PathVariable("examId") String examId) {
+        model.addAttribute("examId", examId);
+        Exam foundExam = examRepository.findFirstById(examId);
         for (Question q : questions) {
             q.setExam(foundExam);
         }
         questionRepository.saveAll(questions);
-        return "redirect:/admin/exam/question";
+        return "redirect:/admin/exam/update/question";
     }
 
-    @PutMapping("admin/exam/question/update_question")
+    @PutMapping("/admin/exam/question/update_question")
     public String putUpdateQuestion (Model model, @ModelAttribute("newQuestion") Question question) {
         Question foundQuestion = questionRepository.findById(question.getId());
         if (foundQuestion != null) {

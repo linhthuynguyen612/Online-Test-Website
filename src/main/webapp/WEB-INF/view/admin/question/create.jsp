@@ -45,6 +45,7 @@
             </div>
         </aside>
 
+
         <main>
             <h1>Quản lý người dùng</h1>
 
@@ -54,21 +55,25 @@
                     <button id="addButton">Thêm câu hỏi</button>
 
                 </div>
-                <div class="box-body" method="post" action="/admin/question/create" style="overflow: auto; height: 450px;">
+                <div class="box-body"  style="overflow: auto; height: 450px;">
                     <div class="modal-main">
-                        <form:form id="addExamForm"  modelAttribute="newQuestion">
+                        <form:form id="addExamForm"  modelAttribute="newQuestion" method="post" action="/admin/exam/question/create_question">
 
                             <div id="inputsContainer"></div> <br>
+
+
+
 
 
                         </form:form>
 
 
-
                     </div>
+
                 </div>
 
-                <button id="submitButton" onclick="saveQuestions()">Hoàn thành</button>
+                <button id="submitButton" onclick="saveQuestions()" type="submit" data-exam-id="${examId}">Hoàn thành</button>
+
             </div>
 
 

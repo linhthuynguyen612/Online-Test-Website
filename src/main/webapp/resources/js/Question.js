@@ -1,11 +1,11 @@
 function taoThanhCong() {
     alert("Bạn đã tạo câu hỏi cho bài thi thành công!");
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("addButton").addEventListener("click", addQuestion);
 });
-
 
 var i = 0;
 function addQuestion(event) {
@@ -55,6 +55,7 @@ function addQuestion(event) {
 document.getElementById("addButton").addEventListener("click", addQuestion);
 
 function saveQuestions() {
+    var examId = document.getElementById("submitButton").dataset.examId;
     // Tạo một mảng chứa các câu hỏi
     var questions = [];
     for (var j = 1; j <= i; j++) {
@@ -70,7 +71,7 @@ function saveQuestions() {
     }
 
     // Gửi yêu cầu POST tới backend
-    fetch("/admin/exam/question/create_question", {
+    fetch(`/admin/exam/question/create_question/${examId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -78,10 +79,14 @@ function saveQuestions() {
         body: JSON.stringify(questions)
     })
     .then(response => {
-        // Xử lý kết quả trả về từ backend
-        console.log(response);
-        // Redirect hoặc hiển thị thông báo thành công tùy theo nhu cầu
-        taoThanhCong();
+        if (response.ok) {
+            // Nếu yêu cầu thành công, chuyển hướng trang web
+            window.location.href = `/admin/exam/update/question/${examId}`;
+            taoThanhCong();
+        } else {
+            // Nếu có lỗi, hiển thị thông báo hoặc xử lý lỗi khác
+            console.error('Có lỗi xảy ra.');
+        }
     })
     .catch(error => {
         // Xử lý lỗi nếu có

@@ -11,40 +11,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/manageExam.css">
+    <link rel="stylesheet" href="/css/manageUser.css">
 
 
 </head>
-
 <body>
-    <!-- <aside>
-        <div class="top">
-            <div class="logo">
-                <img src="/client/img/logo.png" alt="">
-                <h2 style="color: #ad171c;"> PTIT</h2>
+    <script src="/js/Question.js"></script>
+
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="/client/img/logo.png" alt="">
+                    <h2 style="color: #ad171c;"> PTIT</h2>
+                </div>
             </div>
-        </div>
-        <div class="sidebar">
-            <a href="/admin/exam">
-                <span class="fa-solid fa-laptop-code"></span>
-                <h3>Quản lý kì thi</h3>
-            </a>
+            <div class="sidebar">
+                <a href="/admin/exam">
+                    <span class="fa-solid fa-laptop-code"></span>
+                    <h3>Quản lý kì thi</h3>
+                </a>
 
-            <a href="/admin/user" class="active">
-                <span class="fa-regular fa-user"></span>
-                <h3>Quản lý người dùng</h3>
-            </a>
+                <a href="/admin/user" class="active">
+                    <span class="fa-regular fa-user"></span>
+                    <h3>Quản lý người dùng</h3>
+                </a>
 
-            <a href="">
-                <span class="fa-solid fa-chart-line"></span>
-                <h3>Thống kê</h3>
-            </a>
-        </div>
-    </aside> -->
+                <a href="">
+                    <span class="fa-solid fa-chart-line"></span>
+                    <h3>Thống kê</h3>
+                </a>
+            </div>
+        </aside>
 
-    <main>
+        <main>
             <h1>Danh sách câu hỏi của bài thi</h1>
-            <a href="">Tạo câu hỏi cho bài kiểm tra</a>
+            <a href="/admin/exam/question/create_question/${examId}">Tạo câu hỏi cho bài kiểm tra</a>
             
             <div class="box-body" style="overflow: auto; height: 450px;">
                 <% int index = 0; %>
@@ -69,7 +71,7 @@
                             <label for="">D.</label> ${question.optionD}
                         </div>                
                         <div>
-                            <label for="">Đáp án:</label> ${question.correctOption}
+                            <label for="">Đáp án:</label> ${question.correctOptionIndex}
                         </div>
                     </div>
 
@@ -79,5 +81,12 @@
 
 
 
-    </main>
+        </main>
+
+
+
+
+
 </body>
+</html>
+
