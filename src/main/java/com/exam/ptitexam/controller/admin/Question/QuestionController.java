@@ -43,6 +43,15 @@ public class QuestionController {
         return "admin/question/create";
     }
 
+    @GetMapping("/doexam/{examId}")
+    public String getDoExamPage (Model model, @PathVariable("examId") String examId) {
+        Exam foundExam = examRepository.findFirstById(examId);
+        List<Question> questions = questionRepository.findByExam(foundExam);
+        model.addAttribute("questions", questions);
+        model.addAttribute("examId", examId);
+        return "client/doExam/doExam";
+    }
+
 //    @PostMapping("admin/exam/question/create_question")
 //    public String postCreateQuestion (Model model, @ModelAttribute("newQuestion") Question question) {
 //        questionRepository.save(question);

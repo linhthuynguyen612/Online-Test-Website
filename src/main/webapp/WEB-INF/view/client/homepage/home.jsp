@@ -78,8 +78,8 @@
                                 <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
                             </div>
                             <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
-                            <a href="test.html">
-                                <button class="btn-start-exam">Bắt đầu thi</button>
+                            <a href="/doexam/${exam.id}">
+                                <button class="btn-start-exam" >Bắt đầu thi</button>
                             </a>
                         </div>
                     </c:if>
@@ -100,7 +100,7 @@
                                 <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
                             </div>
                             <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
-                            <a href="test.html">
+                            <a href="/doexam/${exam.id}">
                                 <button class="btn-start-exam">Bắt đầu thi</button>
                             </a>
                         </div>
@@ -124,7 +124,7 @@
                                 <p style="font-weight: 600; margin-left:5px;color:#677788;margin-bottom: 8px;">${exam.description} </p>
                             </div>
                             <p style="margin-bottom: 2rem;">Trạng thái: ${exam.status}</p>
-                            <a href="test.html">
+                            <a href="/doexam/${exam.id}">
                                 <button class="btn-start-exam">Bắt đầu thi</button>
                             </a>
                         </div>
