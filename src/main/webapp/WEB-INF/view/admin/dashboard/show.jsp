@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
         <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
@@ -162,25 +162,15 @@
                 <div class="modal-main">
                     <form id="addUserForm">
                         <div>
-                          <label for="studentName">Tên sinh viên:</label>
-                          <input type="text" id="studentName" name="studentName" required>
+                          <label for="fullName">Fullname:</label>
+                          <input type="text" id="fullName" name="fullName" required>
                         </div>
+                        
                         <div>
-                            <label for="studentCode">Mã sinh viên:</label>
-                            <input type="text" id="studentCode" name="studentCode" required>
+                          <label for="email">Email:</label>
+                          <textarea id="email" name="email" required></textarea>
                         </div>
-                        <div>
-                          <label for="studentEmail">Email:</label>
-                          <textarea id="studentEmail" name="studentEmail" required></textarea>
-                        </div>
-                        <div>
-                          <label for="studentGender">Giới tính:</label>
-                          <select id="studentGender" name="studentGender" required>
-                            <option value="boy">Nam</option>
-                            <option value="girl">Nữ</option>
-                            <option value="other">Khác</option>
-                          </select>
-                        </div>
+                        
                         <div class="form-bot">
                             <button type="submit">Thêm mới</button>
                             <button type="submit" class="close">Đóng</button>
@@ -245,4 +235,4 @@
     <!-- <script src="exam.js"></script> -->
 </body>
 </html>
-
+ -->

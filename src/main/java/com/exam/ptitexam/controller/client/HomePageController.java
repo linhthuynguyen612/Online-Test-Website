@@ -27,15 +27,6 @@ public class HomePageController {
         return "client/homepage/home";
     }
 
-    @GetMapping("/register")
-    public String getRegisterPage() {
-        return "client/auth/register";
-    }
-
-    @GetMapping("/login")
-    public String getLoginPage() {
-        return "client/auth/index";
-    }
-
+   
    
 }

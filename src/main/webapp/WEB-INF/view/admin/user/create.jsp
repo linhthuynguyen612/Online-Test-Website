@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,24 +55,40 @@
                     <div class="modal-main">
                         <form:form id="addUserForm" method="post" action="/admin/user/create" modelAttribute="newUser">
                             <div>
-                                <label>Tên sinh viên:</label>
-                                <form:input type="text" path="fullName" />
+                                <c:set var="errorFullname">
+                                    <form:errors path="fullName" cssClass="invalid-feedback" style="color:red"/>
+                                </c:set>
+                                <label>FullName:</label>
+                                <form:input type="text" path="fullName" class="${not empty errorFullname ? 'is-invalid' : ''}" />
+                                ${errorFullname}
                             </div>
                             <div>
-                                <label>Mã sinh viên:</label>
-                                <form:input type="text" path="studentCode" />
-                            </div>
-                            <div>
+                                <c:set var="errorEmail">
+                                    <form:errors path="email" cssClass="invalid-feedback" style="color:red"/>
+                                </c:set>
                                 <label >Email:</label>
-                                <form:input type="text" path="email" />
+                                <form:input type="email" path="email" class="${not empty errorEmail ? 'is-invalid' : ''}" />
+                                ${errorEmail}
                             </div>
+
                             <div>
-                                <label>Giới tính:</label>
-                                <form:select path="gender">
-                                <form:option value="Nam">Nam</form:option>
-                                <form:option value="Nữ">Nữ</form:option>
+                                <c:set var="errorPassword">
+                                    <form:errors path="password" cssClass="invalid-feedback" style="color:red"/>
+                                </c:set>
+                                <label >Password:</label>
+                                <form:input type="password" path="password" class="${not empty errorPassword ? 'is-invalid' : ''}"/>
+                                ${errorPassword}
+                            </div>
+
+                            <div class="col-md-6 col-12 mb-3">
+                                <label class="form-label">Role:</label>
+                                <form:select class="form-select" path="role.name">
+                                    <form:option value="ADMIN">Admin</form:option>
+                                    <form:option value="USER">User</form:option>
+                                    
                                 </form:select>
                             </div>
+                            
                             <div class="form-bot">
                                 <button style="width: 100%;" type="submit">Thêm mới</button>
                             </div>
@@ -82,82 +100,8 @@
 
             
         </main>
-    <!-- <main class="container">
-        <h1>Quản lý người dùng</h1>
+   
     
-    
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
-                <h2>Thêm người dùng mới</h2>
-            </div>
-            <div class="modal-main">
-                <form:form id="addUserForm" method="post" action="/admin/user/create" modelAttribute="newUser">
-                    <div>
-                        <label>Tên sinh viên:</label>
-                        <form:input type="text" path="fullName" />
-                    </div>
-                    <div>
-                        <label>Mã sinh viên:</label>
-                        <form:input type="text" path="studentCode" />
-                    </div>
-                    <div>
-                        <label >Email:</label>
-                        <form:input type="text" path="email" />
-                    </div>
-                    <div>
-                        <label>Giới tính:</label>
-                        <form:select path="gender">
-                        <form:option value="Nam">Nam</form:option>
-                        <form:option value="Nữ">Nữ</form:option>
-                        </form:select>
-                    </div>
-                    <div class="form-bot">
-                        <button style="width: 100%;" type="submit">Thêm mới</button>
-                    </div>
-                    
-                </form:form>
-            </div>
-        </div>
-    
-    </main>
-         -->
-     
-    <script>
-        $(document).ready(function() {
-            $(".openUpdateModal").click(function() {
-                var userId = $(this).data("id");
-                console.log(userId);
-                $.ajax({
-                    url: '/admin/user/' + userId,
-                    type: 'GET',
-                    success: function(user) {                        
-                        $("#fullName11").val(user.fullName);
-                        $("#studentCode11").val(user.studentCode);
-                        $("#email11").val(user.email);
-                        $("#gender11").val(user.gender);
-                        // Open the modal
-                        $("#modal1").show();
-                        console.log(user);
-                    }
-                });
-            });
-
-            $(".openDeleteModal").click(function() {
-                var userId = $(this).data("id");
-                console.log(userId);
-                $.ajax({
-                    url: '/admin/user/delete/' + userId,
-                    type: 'POST',
-                    success: function(user) {
-                        // Open the modal
-                        $("#modal2").show();
-                        console.log(user);
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
 

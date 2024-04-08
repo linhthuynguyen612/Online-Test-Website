@@ -54,21 +54,34 @@
                         <form:form id="addExamForm" method="post" action="/admin/exam/create" modelAttribute="newExam">
                             
                             <div>
+                                
                                 <label>Mã kì thi:</label>
                                 <form:input type="text" path="id" />
                             </div>
                         
                             <div>
+                                <c:set var="errorName">
+                                    <form:errors path="name" cssClass="invalid-feedback" style="color:red"/>
+                                </c:set>
                               <label>Tên kì thi:</label>
-                              <form:input type="text" path="name" />
+                              <form:input type="text" path="name" class="${not empty errorName ? 'is-invalid' : ''}"/>
+                              ${errorName}
                             </div>
                             <div>
+                                
                                 <label>Loại kì thi:</label>
-                                <form:input type="text" path="type" />
-                            </div>
+                                <form:select path="type">
+                                  <form:option value="Cuối kỳ">Tự do</form:option>
+                                  <form:option value="Giữa kỳ ">Thời gian</form:option>
+                                  <form:option value="Luyện tập">Thời gian</form:option>
+                                </form:select>
+                              </div>
                             <div>
+                                <c:set var="errorDescription">
+                                    <form:errors path="description" cssClass="invalid-feedback" style="color:red"/>
+                                </c:set>
                               <label >Mô tả:</label>
-                              <form:input type="text" path="description" />
+                              <form:input type="text" path="description" class="${not empty errorDescription ? 'is-invalid' : ''}"/>
                             </div>
                             <div>
                               <label>Trạng thái:</label>
