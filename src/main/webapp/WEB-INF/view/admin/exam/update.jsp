@@ -48,8 +48,15 @@
 
             <div class="content">
                 <div class="box-header">
-                    <p>Cập nhật thông tin kì thi</p>
+                    <p style="display: inline-block;">Cập nhật thông tin kì thi</p>
+                    <a 
+                    href="/admin/exam/update/question/${newExam.id}" 
+                    class="viewquestion"
+                    style="display: inline-block;"
+                    >Xem câu hỏi</a>
+
                 </div>
+
                 <div class="box-body" style="overflow: auto; height: 450px;">
                     <div class="modal-main">
                         <form id="updateExamForm" method="post" action="/admin/exam/update" modelAttribute="newExam">
@@ -81,7 +88,6 @@
                               <div class="form-bot">
                                   <button style="width: 100%;" type="submit">Cập nhật</button>
                               </div>
-                              <a href="/admin/exam/update/question/${newExam.id}">Xem câu hỏi của kỳ thi ${newExam.name}</a>
                         
                         </form>
                     </div>

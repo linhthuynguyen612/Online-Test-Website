@@ -45,8 +45,8 @@
         </aside>
 
         <main>
-            <h1>Danh sách câu hỏi của bài thi</h1>
-            <a href="/admin/exam/question/create_question/${examId}">Tạo câu hỏi cho bài kiểm tra</a>
+            <h1 style="display: inline-block;">Danh sách câu hỏi của bài thi</h1>
+            <a href="/admin/exam/question/create_question/${examId}" class="viewquestion">Thêm câu hỏi</a>
             
             <div class="box-body" style="overflow: auto; height: 450px;">
                 <% int index = 0; %>
