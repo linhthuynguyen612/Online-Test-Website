@@ -4,7 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -13,11 +18,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String studentCode;
+
+    @NotNull
+    @Size(min=3, message = "Fullname phải tối thiểu 3 kí tự")
     private String fullName;
+
+    @NotNull
+    @Email
+    @Email(message = "Email không hợp lệ", regexp =
+    "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
+
+    @NotNull
+    @Size(min=2, message = "Password phải tối thiểu 2 kí tự")
     private String password;
-    private String gender;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     
     public long getId() {
@@ -44,19 +62,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getGender() {
-        return gender;
+    public Role getRole() {
+        return role;
     }
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setRole(Role role) {
+        this.role = role;
     }
-    public String getStudentCode() {
-        return studentCode;
-    }
-    public void setStudentCode(String studentCode) {
-        this.studentCode = studentCode;
-    }
-
+    
+   
     
 
 }

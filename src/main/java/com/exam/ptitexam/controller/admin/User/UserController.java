@@ -2,18 +2,22 @@ package com.exam.ptitexam.controller.admin.User;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.exam.ptitexam.domain.Role;
 import com.exam.ptitexam.domain.User;
 import com.exam.ptitexam.service.UserService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
 
 
@@ -21,8 +25,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class UserController {
 
     private final UserService userService;
-    public UserController(UserService userService) {
+    private final PasswordEncoder passwordEncoder;
+
+
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+
     }
     
     @GetMapping("/admin/user")
@@ -37,13 +46,27 @@ public class UserController {
     public String getCreateUser(Model model){
         model.addAttribute("newUser", new User());
         return "admin/user/create";
-    }    
+    }
+
  
     @PostMapping("/admin/user/create")
-    public String postCreateUser(Model model, @ModelAttribute("newUser") User user){
+    public String postCreateUser(Model model, @ModelAttribute("newUser") @Valid User user,
+                                BindingResult newUserBindingResult){
+         List<FieldError> errors = newUserBindingResult.getFieldErrors();
+        for (FieldError error : errors ) {
+            System.out.println (error.getField() + " - " + error.getDefaultMessage());
+            error.getDefaultMessage();
+            }      
+                
         
+        // Validate
+        if(newUserBindingResult.hasErrors()) {
+            return "admin/user/create";
+        }
+        String hashPassword = this.passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashPassword);
+        user.setRole(this.userService.getRoleByName(user.getRole().getName()));
         this.userService.handleSaveUser(user);
-        
         return "redirect:/admin/user";
     }
 
@@ -60,9 +83,6 @@ public class UserController {
         User currentUser = this.userService.getUserById(user.getId());
         if(currentUser != null){
             currentUser.setFullName(user.getFullName());
-            currentUser.setEmail(user.getEmail());
-            currentUser.setGender(user.getGender());
-            currentUser.setStudentCode(user.getStudentCode());
             this.userService.handleSaveUser(currentUser);
         }
          return "redirect:/admin/user";

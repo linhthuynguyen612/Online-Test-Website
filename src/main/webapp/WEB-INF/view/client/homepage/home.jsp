@@ -7,10 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/client/css/home.css">
     
@@ -24,8 +25,8 @@
                 </a>
             </div>
             <div class="caption">
-                <p class="caption1">Học viện Công Nghệ Bưu Chính Viễn Thông</p>
-                <p class="caption2">Hệ thống thi trắc nghiệm trực tuyến</p>
+                <p style="margin-bottom: 0;" class="caption1">Học viện Công Nghệ Bưu Chính Viễn Thông</p>
+                <p style="margin-bottom: 0;" class="caption2">Hệ thống thi trắc nghiệm trực tuyến</p>
             </div>
         </div>
 
@@ -41,13 +42,40 @@
             <a href="#course-1">Luyện tập</a>
             <a href="#course-2">Giữa kỳ</a>
             <a href="#course-3">Cuối kỳ</a>
-            <a href="">
-                <span>
-                    <img class="account-profile-img" src="/client/img/user_icon_3.jpg" alt="">
-                </span>
-            </a>
+            <div class="d-flex m-3">
+                <c:if test="${not empty pageContext.request.userPrincipal}">
+                    
+                    <div class="dropdown my-auto">
+                        <a href="#" class="dropdown" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i style="color: white; font-size: 25px;" class="fas fa-user fa-2x"></i>
+                        </a>    
+                        <ul class="dropdown-menu dropdown-menu-end p-4" aria-labelledby="dropdownMenuLink">
+                            <li class="d-flex align-items-center flex-column" style="min-width: 200px;">
+                                <div class="text-center my-3">
+                                    <c:out value="${sessionScope.fullName}" />
+                                </div>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form method="post" action="/logout">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
+                                    <button class="dropdown-item">Đăng xuất</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </c:if>
+            </div>
+              
+                    
+            
         </div>
+
+        
 
 
     </header>
@@ -181,5 +209,6 @@
 
 
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

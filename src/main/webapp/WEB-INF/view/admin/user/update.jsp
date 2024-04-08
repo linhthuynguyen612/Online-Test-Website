@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,23 +64,16 @@
                                     
                                   </div>
                                   <div>
-                                    <label>Tên sinh viên:</label>
-                                    <form:input type="text" id="fullName11" path="fullName"/>
-                                  </div>
-                                  <div>
-                                      <label>Mã sinh viên:</label>
-                                      <form:input type="text" id="studentCode11" path="studentCode"/>
+                                    <label>FullName:</label>
+                                    <form:input type="text" path="fullName"/>
                                   </div>
                                   <div>
                                     <label >Email:</label>
-                                    <form:input type="text" id="email11" path="email"/>
+                                    <form:input type="text" path="email" disabled="true"/>
                                   </div>
-                                  <div>
-                                    <label>Giới tính:</label>
-                                    <form:select id="gender11" path="gender">
-                                      <form:option value="Nam">Nam</form:option>
-                                      <form:option value="Nữ">Nữ</form:option>
-                                    </form:select>
+                                  <div style="display: none;">
+                                    <label >Password:</label>
+                                    <form:input type="password"  path="password"/>
                                   </div>
                                   <div class="form-bot">
                                       <button style="width: 100%;" type="submit">Cập nhật</button>
@@ -100,7 +95,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/User.js"></script>
 
-    <script>
+   
         $(document).ready(function() {
             $(".openUpdateModal").click(function() {
                 var userId = $(this).data("id");
@@ -134,7 +129,7 @@
                 });
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>
 
