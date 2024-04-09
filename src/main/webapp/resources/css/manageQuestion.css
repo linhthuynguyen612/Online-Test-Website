@@ -1,0 +1,47 @@
+button {
+    display: inline-block;
+}
+
+#addButton {
+    padding: 10px 30px 10px;
+    margin: 0px 20px 0px 600px;
+    border: 2px rgb(85, 85, 85) dashed;
+    border-radius: 10px;
+    background-color: rgb(237, 231, 231);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+#addButton:hover {
+    background-color: transparent;
+    transition: 0.25s ease;
+}
+
+#submitButton {
+    display: block;
+    padding: 15px 40px 15px;
+    margin: 10px auto 10px;
+    border-radius: 999px;
+
+    background-color: #3781f8;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+
+.question{
+    margin: 20px 100px 20px;
+    padding: 0px 10px 10px;
+}
+
+.question + .question {
+    border-top: 1px gray solid;
+    padding-top: 20px;
+}
+
+label {
+    font-size: 17px;
+}

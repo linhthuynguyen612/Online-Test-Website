@@ -16,6 +16,7 @@
 
 </head>
 <body>
+
     <div class="container">
         <aside>
             <div class="top">
@@ -47,8 +48,15 @@
 
             <div class="content">
                 <div class="box-header">
-                    <p>Cập nhật thông tin kì thi</p>
+                    <p style="display: inline-block;">Cập nhật thông tin kì thi</p>
+                    <a 
+                    href="/admin/exam/update/question/${newExam.id}" 
+                    class="viewquestion"
+                    style="display: inline-block;"
+                    >Xem câu hỏi</a>
+
                 </div>
+
                 <div class="box-body" style="overflow: auto; height: 450px;">
                     <div class="modal-main">
                         <form id="updateExamForm" method="post" action="/admin/exam/update" modelAttribute="newExam">
@@ -62,8 +70,12 @@
                                 <form:input type="text" id="name11" path="newExam.name" />
                             </div>
                               <div>
-                                  <label>Loại kì thi:</label>
-                                  <form:input type="text" path="newExam.type" id="type11"/>
+                                <label>Loại kì thi:</label>
+                                <form:select path="newExam.type">
+                                  <form:option value="Luyện tập">Luyện tập</form:option>
+                                  <form:option value="Cuối kỳ">Cuối kỳ</form:option>
+                                  <form:option value="Giữa kỳ">Giữa kỳ</form:option>
+                                </form:select>
                               </div>
                               <div>
                                 <label >Mô tả:</label>
@@ -76,11 +88,7 @@
                                   <form:option value="Thời gian">Thời gian</form:option>
                                 </form:select>
                               </div>
-                              <div class="box-header">Cập nhật câu hỏi trong kì thi</div>
-                                <div class="box-body" style="overflow: auto; height: 450px;">
-                                    <div id="inputsContainer"></div> <br>
-                                    <button id="addButton">Thêm câu hỏi</button> <br>
-                                </div>
+                              
                               <div class="form-bot">
                                   <button style="width: 100%;" type="submit">Cập nhật</button>
                               </div>

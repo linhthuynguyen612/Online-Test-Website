@@ -1,0 +1,17 @@
+.clock {
+    position: fixed;
+    top: 70px;
+    left: 85%;
+    transform: translateX(-50%);
+    z-index: 9999; /* Đảm bảo đồng hồ hiển thị trên tất cả các phần khác */
+    text-align: center;
+    font-weight: 500;
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 100px;
+}
+
+#countdown {
+    font-size: 24px;
+}
